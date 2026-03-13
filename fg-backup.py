@@ -134,7 +134,6 @@ def appliance_rest_call (action, appliance, basic_auth_hdr, api, payload = None,
       "message": "", 
       "path": "/home/ultra/system-backups/us-fg2", 
       "status": "COMPLETED", (or "EXECUTING" or "ERROR")
-
       "timeStamp": 1772207186, 
       "username": "ultra"
     }
@@ -197,7 +196,7 @@ def main ():
     # 
     keep_count = 0
     if args.fghost == None:
-        print ("Please specify a hostname or IP{ address for the Flow Gateway appliance using --fghost")
+        print ("Please specify a hostname or IP address for the Flow Gateway appliance using --fghost")
         return
     if args.desthost == None:
         print ("Please specify a hostname for the destination host (backup target) using --desthost")
