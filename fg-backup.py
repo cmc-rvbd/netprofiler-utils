@@ -6,8 +6,8 @@ Usage:
     [--destpass dpass] --destpath destpath --key encryption-key --trim keep_count
 
 If either of the passwords is not provided, they will be prompted for on the CLI.
-Note that if the FLow Gateway host has SSH keys set-up up with the destination host such that
-A password is not required, then the "destpass" argument will not be used. I.e. the value is
+Note that if the Flow Gateway host has SSH keys set-up up with the destination host such that
+a password is not required, then the "destpass" argument will not be used, i.e. the value is
 irrelevant. This would be the suggested way to use the script to avoid the need for embedding passwords
 in script or config files.
 
@@ -231,7 +231,7 @@ def main ():
     if basic_auth_hdr == None:
         fail("Failed to create a BASIC auth header using the given credentials")
     
-    # Check that we can connect to the target appliance
+    # Verify that we can connect to the target appliance
     #
     result = appliance_rest_call ('GET', args.fghost, basic_auth_hdr, '/api/cascade.aaa/1.0/keepalive')
     if result == None:
@@ -244,7 +244,7 @@ def main ():
     # We will now remove all but the three most recent backups but this assumes the script is running
     # on the destination host...
     #
-    if keep_count > 0:
+    if status == "Backup succeeded" and keep_count > 0:
         print('Trimming backup folder to the most recent', keep_count, 'backups')
         for filename in sorted(os.listdir(args.destpath))[:-keep_count]:
             filename_relPath = os.path.join(args.destpath,filename)
